@@ -1,0 +1,201 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, 
+body{
+    height: 100%;
+    width: 100%;
+}
+
+:root{
+    /* background colors */
+    --bg--primary-color: #111111;
+    --text--primary-color: #f9f9f9;
+    --bg-fill-color: #f4f4f4;
+    --bg-food-color: #ff4757;
+
+    /* button colors */
+    --btn-bg-color: #D7D6CB;
+    --btn-text-color: #121212;
+    --btn-border-color: #121212;
+
+    /* retro shadow */
+    --btn-shadow-sm: 0.125rem;
+    --btn-shadow-lg: 0.25rem;
+
+    /* motion */
+    --btn-transition-fast: 200ms;
+
+    /* font */
+    --btn-font-family: 'Jersey 10', sans-serif;
+    --btn-font-size: 1.1rem;
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 40px;
+    --space-3xl: 48px;
+    
+
+    /* border colors */
+    --border-primary-color: #333333;
+    --border-radius-xs: 4px;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 20px;
+    --border-radius-2xl: 24px;
+}
+
+html{
+    background-color: var(--bg--primary-color);
+    color: var(--text--primary-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+main, section{
+    width: 100%;
+    height: 100%;
+}
+
+.btn{
+    /* typography */
+    font-family: var(--btn-font-family);
+    font-size: var(--btn-font-size);
+    letter-spacing: 0.5px;
+
+    /* layout */
+    padding: var(--space-sm) var(--space-md);
+
+    /* colors */
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
+
+    /* border */
+    border: 2px solid var(--btn-border-color);
+    border-radius: var(--border-radius-sm);
+
+    /* pressed by default */
+    box-shadow: 
+        var(--btn-shadow-sm) 
+        var(--btn-shadow-sm) 
+        var(--btn-border-color);
+
+    transform: translate(
+        var(--btn-shadow-sm),
+        var(--btn-shadow-sm)
+    );
+
+    cursor: pointer;
+
+    transition:
+        transform var(--btn-transition-fast) ease,
+        box-shadow var(--btn-transition-fast) ease;
+}
+
+/* hover = pop up */
+.btn:hover{
+    transform: translate(0, 0);
+    box-shadow:
+        var(--btn-shadow-lg)
+        var(--btn-shadow-lg)
+        var(--btn-border-color);
+}
+
+
+section{
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    height: 100%;
+}
+
+section .infos{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info{
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border-primary-color);
+    border-radius: var(--border-radius-sm);
+}
+.board{
+    border: 1px solid var(--border-primary-color);
+    flex-grow: 1;
+    border-radius: var(--border-radius-xs);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr) );
+    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr) );
+}
+
+
+.block {
+    border: 1px solid var(--border-primary-color);
+    border-radius: 10%;
+}
+
+.fill{
+    background-color: var(--bg-fill-color);
+}
+
+.food{
+    background-color: var(--bg-food-color);
+}
+
+.modal{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: #35353587;
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.modal .start-game,
+.modal .game-over{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+.modal .game-over{
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .info h3 {
+        font-size: 12px;  /* smaller text */
+    }
+    .info {
+        padding: 4px 8px;  /* smaller box */
+    }
+    section {
+        padding: 16px; /* reduce section padding */
+        gap: 8px; /* reduce spacing between elements */
+    }
+
+    .board {
+        grid-template-columns: repeat(auto-fill, minmax(25px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(25px, 1fr));
+    }
+
+    .block {
+        border-width: 1px;  /* thinner border for small blocks */
+    }
+}
+
+.head {
+    background-color: #A8DF8E;
+}
